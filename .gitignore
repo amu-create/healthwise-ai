@@ -72,8 +72,8 @@ logs/
 *.log
 
 # Taskmaster
-.taskmaster/local/
-.taskmaster/cache/
+.taskmaster/
+!.taskmaster/templates/example_prd.txt
 
 # Temporary files
 *.tmp
