@@ -8,6 +8,18 @@ if os.environ.get('DATABASE_URL'):
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
+else:
+    # PostgreSQL 직접 설정
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'healthwise_dev',
+            'USER': 'developer',
+            'PASSWORD': 'devpass123',
+            'HOST': os.environ.get('POSTGRES_HOST', 'db'),
+            'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        }
+    }
 
 # Redis 설정 - Docker 환경
 REDIS_HOST = os.environ.get('REDIS_HOST', 'redis')

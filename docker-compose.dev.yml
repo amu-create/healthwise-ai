@@ -54,6 +54,8 @@ services:
     environment:
       - DEBUG=True
       - DATABASE_URL=postgresql://developer:devpass123@db:5432/healthwise_dev
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
       - REDIS_URL=redis://redis:6379/1
       - DJANGO_SETTINGS_MODULE=healthwise.settings_docker
       - REDIS_HOST=redis

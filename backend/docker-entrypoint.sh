@@ -17,17 +17,19 @@ echo "Redis started"
 mkdir -p /app/logs
 chmod 777 /app/logs
 
-echo "Running migrations..."
-# 마이그레이션 파일 생성
-python manage.py makemigrations --noinput || true
-python manage.py makemigrations core --noinput || true
-python manage.py makemigrations social --noinput || true
-python manage.py makemigrations workout --noinput || true
-python manage.py makemigrations pose_analysis --noinput || true
-python manage.py makemigrations achievements --noinput || true
+# static 디렉토리 생성
+mkdir -p /app/static
+mkdir -p /app/staticfiles
 
-# 전체 마이그레이션 실행
-python manage.py migrate --noinput || true
+echo "Cleaning up old migrations..."
+find /app -path "*/migrations/*.pyc" -delete || true
+find /app -path "*/migrations/*.pyo" -delete || true
+
+echo "Making migrations..."
+python manage.py makemigrations --noinput || true
+
+echo "Running migrations..."
+python manage.py migrate --run-syncdb --noinput || true
 
 echo "Creating cache table..."
 python manage.py createcachetable || true
