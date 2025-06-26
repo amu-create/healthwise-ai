@@ -1,0 +1,47 @@
+{
+  "title": "Nuestras Características",
+  "titleHighlight": "Innovadoras",
+  "subtitle": "Cuidando tu salud con tecnología IA",
+  "features": [
+    {
+      "title": "Consulta con Chatbot IA",
+      "description": "Consulta de salud las 24 horas y consejos personalizados",
+      "limit": "No miembros limitados a 3 usos"
+    },
+    {
+      "title": "Rutina de Ejercicio IA",
+      "description": "La IA diseña programas de entrenamiento personalizados",
+      "limit": "No miembros limitados a 3 usos"
+    },
+    {
+      "title": "Recomendación Musical IA",
+      "description": "La IA recomienda música que coincida con tu estilo de entrenamiento",
+      "limit": "No miembros limitados a 3 usos"
+    },
+    {
+      "title": "Análisis de Alimentos IA",
+      "description": "Analiza calorías y nutrientes a partir de fotos",
+      "limit": "Solo miembros"
+    },
+    {
+      "title": "Mapa de Ejercicio",
+      "description": "Encuentra instalaciones de ejercicio cercanas y recomendaciones de rutas",
+      "limit": "No miembros limitados a 3 usos"
+    },
+    {
+      "title": "Panel de Salud",
+      "description": "Ve tus datos de salud de un vistazo",
+      "limit": "Disponible para todos los usuarios"
+    },
+    {
+      "title": "Notificaciones Push",
+      "description": "Recordatorios de tiempo de ejercicio y consejos de salud",
+      "limit": "Solo miembros"
+    },
+    {
+      "title": "Gestión de Perfil",
+      "description": "Administra tu perfil de salud personal",
+      "limit": "Solo miembros"
+    }
+  ]
+}

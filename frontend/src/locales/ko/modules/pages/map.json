@@ -1,0 +1,26 @@
+{
+  "title": "운동 시설 찾기",
+  "searchPlaceholder": "위치 검색",
+  "searchRadius": "검색 반경",
+  "fitness": "헬스장",
+  "yoga": "요가원",
+  "pilates": "필라테스",
+  "crossfit": "크로스핏",
+  "swimming": "수영장",
+  "martialArts": "격투 스포츠",
+  "danceAcademy": "댄스 학원",
+  "other": "기타",
+  "exerciseType": "운동 종류",
+  "locationSettings": "위치 설정",
+  "searchNearby": "주변 검색",
+  "locating": "위치 찾는 중...",
+  "noResults": "검색 결과가 없습니다",
+  "tryDifferentSearch": "다른 검색어를 시도해보세요",
+  "locationStatus": {
+    "gps": "GPS 위치",
+    "wifi": "Wi-Fi 위치",
+    "ip": "IP 위치",
+    "manual": "수동 위치"
+  },
+  "calories": "칼로리"
+}

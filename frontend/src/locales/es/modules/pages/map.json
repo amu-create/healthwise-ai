@@ -1,0 +1,26 @@
+{
+  "title": "Encontrar Instalaciones de Ejercicio",
+  "searchPlaceholder": "Buscar ubicación",
+  "searchRadius": "Radio de Búsqueda",
+  "fitness": "Gimnasio",
+  "yoga": "Yoga",
+  "pilates": "Pilates",
+  "crossfit": "CrossFit",
+  "swimming": "Piscina",
+  "martialArts": "Artes Marciales",
+  "danceAcademy": "Academia de Baile",
+  "other": "Otro",
+  "exerciseType": "Tipo de Ejercicio",
+  "locationSettings": "Configuración de Ubicación",
+  "searchNearby": "Buscar Cercanos",
+  "locating": "Localizando...",
+  "noResults": "No hay resultados de búsqueda",
+  "tryDifferentSearch": "Intenta con otros términos de búsqueda",
+  "locationStatus": {
+    "gps": "Ubicación GPS",
+    "wifi": "Ubicación Wi-Fi",
+    "ip": "Ubicación IP",
+    "manual": "Ubicación Manual"
+  },
+  "calories": "calorías"
+}

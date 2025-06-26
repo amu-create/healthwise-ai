@@ -1,0 +1,23 @@
+{
+  "title": "Messages",
+  "selectConversation": "Select a conversation",
+  "searchConversations": "Search conversations",
+  "newConversation": "New Conversation",
+  "searchUsers": "Search users",
+  "typeMessage": "Type a message...",
+  "online": "Online",
+  "offline": "Offline",
+  "lastSeen": "Last seen: {{time}}",
+  "yesterday": "Yesterday",
+  "you": "You",
+  "typing": "typing",
+  "deleteConversation": "Delete conversation",
+  "conversationDeleted": "Conversation deleted",
+  "attachment": "Attachment",
+  "fileTooLarge": "File is too large (max 50MB)",
+  "errorFetchingConversations": "Error fetching conversations",
+  "errorFetchingMessages": "Error fetching messages",
+  "errorSendingMessage": "Failed to send message",
+  "errorStartingConversation": "Failed to start conversation",
+  "errorDeletingConversation": "Failed to delete conversation"
+}

@@ -1,0 +1,12 @@
+{
+  "welcomeMessage": "FitFlow에 오신 것을 환영합니다!",
+  "subtitle": "당신의 개인 맞춤형 피트니스 동반자",
+  "getStarted": "시작하기",
+  "features": {
+    "title": "기능",
+    "ai": "AI 기반 운동 및 영양 계획",
+    "tracking": "진행 상황과 성과 추적",
+    "community": "피트니스 커뮤니티와 연결",
+    "music": "운동 음악 추천"
+  }
+}

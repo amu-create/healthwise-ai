@@ -1,0 +1,50 @@
+{
+  "feature1": {
+    "label": "Chequeo de Salud IA",
+    "title": "Análisis del Estado de Salud con IA",
+    "titleHighlight": "Análisis de Salud IA",
+    "description": "Con simples cuestionarios e información corporal, la IA analiza integralmente tu estado de salud actual y presenta un plan de salud personalizado.",
+    "items": [
+      "Cálculo automático de IMC, porcentaje de grasa corporal y otras métricas",
+      "Evaluación de riesgos de salud basada en el estilo de vida",
+      "Creación de planes de mejora de salud personalizados",
+      "Seguimiento periódico del estado de salud e informes"
+    ]
+  },
+  "feature2": {
+    "label": "Entrenador de Ejercicios IA",
+    "title": "Sistema de Recomendación de Ejercicios con IA",
+    "titleHighlight": "Entrenador IA",
+    "description": "La IA diseña programas de ejercicio óptimos para tu nivel de condición física y objetivos, y guía tus ejercicios en tiempo real.",
+    "items": [
+      "Generación de programas de ejercicio basados en la condición física y objetivos individuales",
+      "Guía precisa de postura y respiración para cada ejercicio",
+      "Monitoreo del progreso del ejercicio en tiempo real",
+      "Registro automático de ejercicios y análisis de rendimiento"
+    ]
+  },
+  "feature3": {
+    "label": "Guía Nutricional IA",
+    "title": "Asistente de Gestión Nutricional con IA",
+    "titleHighlight": "Nutricionista IA",
+    "description": "Registra tus comidas diarias y la IA analizará el equilibrio nutricional y recomendará planes de dieta saludables.",
+    "items": [
+      "Cálculo automático de calorías y nutrientes de los registros de comidas",
+      "Identificación de deficiencias nutricionales y sugerencias de suplementación",
+      "Generación de planes de comidas personalizados según objetivos",
+      "Recomendaciones de restaurantes y menús saludables"
+    ]
+  },
+  "feature4": {
+    "label": "Mapa de Ejercicios",
+    "title": "Búsqueda Integrada de Instalaciones de Ejercicio",
+    "titleHighlight": "Mapa de Instalaciones",
+    "description": "Encuentra todas las instalaciones de ejercicio cerca de tu ubicación actual de un vistazo y consulta información detallada.",
+    "items": [
+      "Búsqueda en tiempo real de gimnasios y estudios de yoga cercanos basada en GPS",
+      "Información de tarifas y horarios de operación de las instalaciones",
+      "Filtrado por distancia y calificación",
+      "Gestión de favoritos e historial de visitas"
+    ]
+  }
+}

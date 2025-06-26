@@ -1,0 +1,33 @@
+{
+  "title": "영양 관리",
+  "subtitle": "일일 영양 섭취량을 추적하고 분석합니다",
+  "periods": {
+    "day": "1일",
+    "week": "7일",
+    "month": "1개월",
+    "sixMonths": "6개월",
+    "year": "1년"
+  },
+  "errorLoadingData": "영양 데이터를 불러오는데 실패했습니다.",
+  "averageCalories": "평균 칼로리",
+  "averageProtein": "평균 단백질",
+  "averageCarbohydrates": "평균 탄수화물",
+  "averageFat": "평균 지방",
+  "calorieIntakeTrend": "칼로리 섭취 추이",
+  "averageNutrientRatio": "평균 영양소 비율",
+  "nutrientIntakeTrend": "영양소별 섭취 추이",
+  "periodSummary": "기간 요약",
+  "analyzedFoodCount": "분석된 음식 수",
+  "recordedDays": "기록된 일수",
+  "dailyAverageFoods": "일평균 음식 수",
+  "calorieGoalAchievement": "칼로리 목표 달성률",
+  "noDataForPeriod": "선택한 기간의 영양 데이터가 없습니다",
+  "startRecording": "AI 영양 분석을 통해 음식을 기록해보세요!",
+  "calories": "칼로리",
+  "kcalPerDay": "kcal/일",
+  "gPerDay": "g/일",
+  "gram": "g",
+  "breakfast": "아침",
+  "lunch": "점심",
+  "dinner": "저녁"
+}

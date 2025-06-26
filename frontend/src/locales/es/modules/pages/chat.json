@@ -1,0 +1,20 @@
+{
+  "title": "Consulta de Salud con IA",
+  "welcome": "¡Hola! No dudes en preguntar cualquier cosa relacionada con la salud.",
+  "messagePlaceholder": "Escribe tu mensaje...",
+  "newChat": "Nueva Conversación",
+  "guestLimit": "Los invitados pueden usar hasta {{count}} veces.",
+  "messagesRemaining": "{{count}} mensajes restantes",
+  "profileHint": "Completa tu perfil para obtener consejos de salud personalizados más precisos.",
+  "suggestions": {
+    "exercise": "Recomienda ejercicios que pueda hacer hoy",
+    "nutrition": "Consejos de dieta para bajar de peso",
+    "health": "¿Cuáles son buenas formas de recuperarse de la fatiga?",
+    "stress": "Háblame sobre métodos de manejo del estrés"
+  },
+  "error": "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+  "deleteAllTitle": "Eliminar Historial de Chat",
+  "deleteConfirm": "Eliminar todo el historial de chat? Esta acción no se puede deshacer.",
+  "limitExceededTitle": "Límite de Uso",
+  "limitExceededMessage": "Regístrate para acceso ilimitado."
+}

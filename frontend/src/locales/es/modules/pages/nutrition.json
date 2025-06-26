@@ -1,0 +1,33 @@
+{
+  "title": "Gestión Nutricional",
+  "subtitle": "Rastrea y analiza tu ingesta nutricional diaria",
+  "periods": {
+    "day": "1 Día",
+    "week": "7 Días",
+    "month": "1 Mes",
+    "sixMonths": "6 Meses",
+    "year": "1 Año"
+  },
+  "errorLoadingData": "Error al cargar datos nutricionales.",
+  "averageCalories": "Calorías Promedio",
+  "averageProtein": "Proteína Promedio",
+  "averageCarbohydrates": "Carbohidratos Promedio",
+  "averageFat": "Grasa Promedio",
+  "calorieIntakeTrend": "Tendencia de Ingesta Calórica",
+  "averageNutrientRatio": "Proporción Promedio de Nutrientes",
+  "nutrientIntakeTrend": "Tendencia de Ingesta de Nutrientes",
+  "periodSummary": "Resumen del Período",
+  "analyzedFoodCount": "Alimentos Analizados",
+  "recordedDays": "Días Registrados",
+  "dailyAverageFoods": "Alimentos Promedio Diarios",
+  "calorieGoalAchievement": "Logro de Meta Calórica",
+  "noDataForPeriod": "No hay datos nutricionales para el período seleccionado",
+  "startRecording": "¡Comienza a registrar alimentos con Análisis Nutricional IA!",
+  "calories": "Calorías",
+  "kcalPerDay": "kcal/día",
+  "gPerDay": "g/día",
+  "gram": "g",
+  "breakfast": "Desayuno",
+  "lunch": "Almuerzo",
+  "dinner": "Cena"
+}

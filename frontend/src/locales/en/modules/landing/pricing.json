@@ -1,0 +1,55 @@
+{
+  "title": "Reasonable",
+  "titleHighlight": "Pricing Plans",
+  "subtitle": "Choose the plan that fits you",
+  "monthly": "Monthly",
+  "yearly": "Yearly",
+  "recommended": "Recommended",
+  "currency": "$",
+  "perMonth": "/month",
+  "perYear": "/year",
+  "plans": {
+    "free": {
+      "name": "Free",
+      "features": [
+        "3 trials for each AI feature",
+        "Basic dashboard",
+        "Limited workout recommendations",
+        "Community access"
+      ],
+      "notIncluded": [
+        "AI food analysis",
+        "Push notifications",
+        "Unlimited usage"
+      ],
+      "cta": "Try Now"
+    },
+    "pro": {
+      "name": "Pro",
+      "features": [
+        "Unlimited access to all AI features",
+        "AI food analysis included",
+        "Advanced statistics and analytics",
+        "Push notification features",
+        "Priority customer support"
+      ],
+      "notIncluded": [
+        "Team sharing features"
+      ],
+      "cta": "Get Started"
+    },
+    "team": {
+      "name": "Team",
+      "cta": "Contact Us",
+      "features": [
+        "All Pro features",
+        "Share with up to 5 team members",
+        "Admin dashboard",
+        "Team analytics reports",
+        "Dedicated account manager",
+        "API access"
+      ],
+      "notIncluded": []
+    }
+  }
+}

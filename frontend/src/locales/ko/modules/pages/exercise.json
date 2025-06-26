@@ -1,0 +1,28 @@
+{
+  "title": "운동 영상",
+  "subtitle": "전문가가 선별한 운동 영상으로 홈트레이닝을 시작하세요",
+  "searchPlaceholder": "운동 영상 검색...",
+  "category": "카테고리",
+  "categories": {
+    "all": "전체",
+    "cardio": "유산소 운동",
+    "strength": "근력 운동",
+    "yoga": "요가",
+    "pilates": "필라테스",
+    "hiit": "HIIT",
+    "stretching": "스트레칭"
+  },
+  "difficulty": {
+    "label": "난이도",
+    "beginner": "초급",
+    "intermediate": "중급",
+    "advanced": "상급"
+  },
+  "loadError": "영상을 불러오는 중 오류가 발생했습니다.",
+  "watchVideo": "영상 보기",
+  "noResults": "검색 결과가 없습니다",
+  "tryOtherSearch": "다른 검색어나 필터를 시도해보세요",
+  "logWorkout": "운동 완료 기록",
+  "workoutLogged": "운동 기록이 추가되었습니다!",
+  "workoutLogFailed": "운동 기록 추가에 실패했습니다."
+}

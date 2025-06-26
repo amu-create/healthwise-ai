@@ -1,0 +1,55 @@
+{
+  "title": "Planes de Precios",
+  "titleHighlight": "Razonables",
+  "subtitle": "Elige el plan que mejor se adapte a ti",
+  "monthly": "Mensual",
+  "yearly": "Anual",
+  "recommended": "Recomendado",
+  "currency": "€",
+  "perMonth": "/mes",
+  "perYear": "/año",
+  "plans": {
+    "free": {
+      "name": "Gratis",
+      "features": [
+        "3 pruebas para cada función de IA",
+        "Panel básico",
+        "Recomendaciones limitadas de ejercicio",
+        "Acceso a la comunidad"
+      ],
+      "notIncluded": [
+        "Análisis de alimentos con IA",
+        "Notificaciones push",
+        "Uso ilimitado"
+      ],
+      "cta": "Probar Ahora"
+    },
+    "pro": {
+      "name": "Pro",
+      "features": [
+        "Acceso ilimitado a todas las funciones de IA",
+        "Análisis de alimentos con IA incluido",
+        "Estadísticas y análisis avanzados",
+        "Funciones de notificación push",
+        "Soporte prioritario al cliente"
+      ],
+      "notIncluded": [
+        "Funciones para compartir en equipo"
+      ],
+      "cta": "Comenzar"
+    },
+    "team": {
+      "name": "Equipo",
+      "cta": "Contáctanos",
+      "features": [
+        "Todas las características Pro",
+        "Compartir con hasta 5 miembros del equipo",
+        "Panel de administrador",
+        "Informes de análisis del equipo",
+        "Gerente de cuenta dedicado",
+        "Acceso a API"
+      ],
+      "notIncluded": []
+    }
+  }
+}

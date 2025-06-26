@@ -1,0 +1,20 @@
+{
+  "title": "AI 건강 상담",
+  "welcome": "안녕하세요! 건강 관련 궁금한 점을 편하게 물어보세요.",
+  "messagePlaceholder": "메시지를 입력하세요...",
+  "newChat": "새 대화",
+  "guestLimit": "비회원은 {{count}}회까지 사용 가능합니다.",
+  "messagesRemaining": "{{count}}회 남음",
+  "profileHint": "프로필을 완성하면 더 정확한 맞춤형 건강 조언을 받을 수 있습니다.",
+  "suggestions": {
+    "exercise": "오늘 할 수 있는 운동 추천해줘",
+    "nutrition": "체중 감량을 위한 식단 조언",
+    "health": "피로 회복에 좋은 방법은?",
+    "stress": "스트레스 관리 방법 알려줘"
+  },
+  "error": "메시지 전송에 실패했습니다. 다시 시도해주세요.",
+  "deleteAllTitle": "대화 내역 삭제",
+  "deleteConfirm": "모든 대화 내역을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+  "limitExceededTitle": "사용 제한",
+  "limitExceededMessage": "회원가입 후 무제한으로 이용하실 수 있습니다."
+}

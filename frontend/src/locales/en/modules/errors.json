@@ -1,0 +1,13 @@
+{
+  "general": "An error occurred. Please try again.",
+  "network": "Please check your network connection.",
+  "auth": "Authentication required. Please log in again.",
+  "notFound": "The requested resource was not found.",
+  "permission": "You don't have permission.",
+  "validation": "Please check your input.",
+  "serverError": "A server error occurred.",
+  "fetchFailed": "Failed to load data.",
+  "createPostFailed": "Failed to create post.",
+  "commentFailed": "Failed to add comment.",
+  "deleteFailed": "Failed to delete."
+}

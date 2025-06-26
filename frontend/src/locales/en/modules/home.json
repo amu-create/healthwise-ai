@@ -1,0 +1,12 @@
+{
+  "welcomeMessage": "Welcome to FitFlow!",
+  "subtitle": "Your personalized fitness companion",
+  "getStarted": "Get Started",
+  "features": {
+    "title": "Features",
+    "ai": "AI-powered workout and nutrition plans",
+    "tracking": "Track your progress and achievements",
+    "community": "Connect with fitness community",
+    "music": "Workout music recommendations"
+  }
+}
