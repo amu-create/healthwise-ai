@@ -17,10 +17,11 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /tmp/wheels -r /tmp/requireme
 # 실행 스테이지
 FROM python:3.11-slim-bullseye
 
-# 런타임 의존성 설치
+# 런타임 의존성 설치 (dos2unix 추가)
 RUN apt-get update && apt-get install -y \
     libpq5 \
     netcat \
+    dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
 # wheels 복사 및 설치
@@ -31,19 +32,15 @@ RUN pip install --no-cache /tmp/wheels/*
 # 작업 디렉토리 설정
 WORKDIR /app
 
-# wait-for-db 스크립트 추가
+# entrypoint 스크립트 복사 및 변환
 COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+RUN dos2unix /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh
 
 # 애플리케이션 코드 복사
 COPY . /app/
 
 # 로그 파일을 위한 디렉토리 생성
 RUN mkdir -p /app/logs && chmod 777 /app/logs
-
-# 비root 사용자로 실행 (Windows 볼륨 마운트 문제 해결을 위해 제거)
-# RUN useradd -m -u 1000 django && chown -R django:django /app
-# USER django
 
 # 환경변수 설정
 ENV PYTHONUNBUFFERED=1 \

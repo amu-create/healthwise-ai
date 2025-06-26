@@ -19,9 +19,6 @@ echo "Redis started"
 echo "Running migrations..."
 python manage.py migrate --noinput
 
-# Static 파일 수집 (프로덕션용)
-# python manage.py collectstatic --noinput
-
 # 관리자 계정 생성 (이미 있으면 스킵)
 python manage.py shell << EOF
 from django.contrib.auth import get_user_model
