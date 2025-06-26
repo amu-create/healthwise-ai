@@ -1,11 +1,12 @@
 # 🏥 HealthWise AI
 
-AI 기반 개인 건강 관리 플랫폼
+AI 기반 개인 건강 관리 플랫폼 (실시간 운동 자세분석 지원)
 
 [![GitHub](https://img.shields.io/github/license/amu-create/healthwise-ai)](LICENSE)
 [![Docker](https://img.shields.io/badge/docker-ready-blue)](docker-compose.dev.yml)
 [![React](https://img.shields.io/badge/react-18.x-61dafb)](frontend)
 [![Django](https://img.shields.io/badge/django-5.x-green)](backend)
+[![MediaPipe](https://img.shields.io/badge/mediapipe-0.10.21-orange)](backend)
 
 ## 🚀 팀원 빠른 시작 (3분 완료)
 
@@ -13,7 +14,7 @@ AI 기반 개인 건강 관리 플랫폼
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) 설치
 - [Git](https://git-scm.com/) 설치
 
-### ⚡ 자동 설정 (Windows)
+### ⚡ 자동 설정 (Windows 추천)
 
 ```bash
 # 1. 저장소 클론
@@ -48,12 +49,31 @@ docker-compose -f docker-compose.dev.yml up --build -d
 - **관리자 페이지**: http://localhost:8000/admin
   - 개발용 계정: `admin` / `admin123`
 
+## 🎯 주요 기능
+
+- 🤖 **AI 운동 자세분석**: MediaPipe 기반 실시간 자세 교정
+  - 실시간 카메라 분석
+  - 비디오 파일 업로드 분석
+  - 스쿼트, 푸쉬업, 플랭크, 런지, 버피 지원
+- 💬 **AI 챗봇**: OpenAI GPT 기반 건강 상담
+- 💪 **운동 추적**: 운동 기록 및 진도 관리
+- 🥗 **영양 관리**: 식단 분석 및 칼로리 추적
+- 👥 **소셜 기능**: 친구와 운동 기록 공유
+- 📊 **대시보드**: 개인 건강 데이터 시각화
+- 🎵 **음악 추천**: 운동에 맞는 음악 제안
+
 ## 🏗️ 프로젝트 구조
 
 ```
 healthwise-ai/
 ├── 📱 frontend/          # React TypeScript 앱
+│   ├── src/components/pose-analysis/  # 자세분석 컴포넌트
+│   ├── src/hooks/pose-analysis/       # MediaPipe 훅
+│   └── src/services/pose-analysis/    # 자세분석 서비스
 ├── 🐍 backend/           # Django REST API
+│   ├── apps/pose_analysis/            # 자세분석 앱
+│   ├── apps/pose_analysis/utils/      # MediaPipe 프로세서
+│   └── requirements.txt               # AI 라이브러리 포함
 ├── 🐳 docker/            # Docker 설정
 ├── 📚 docs/              # 문서
 ├── 🔧 scripts/           # 유틸리티 스크립트
@@ -62,15 +82,6 @@ healthwise-ai/
 └── setup.bat             # Windows 자동 설정
 ```
 
-## 🎯 주요 기능
-
-- 🤖 **AI 챗봇**: OpenAI GPT 기반 건강 상담
-- 💪 **운동 추적**: 실시간 자세 분석 및 추천
-- 🥗 **영양 관리**: 식단 분석 및 칼로리 추적
-- 👥 **소셜 기능**: 친구와 운동 기록 공유
-- 📊 **대시보드**: 개인 건강 데이터 시각화
-- 🎵 **음악 추천**: 운동에 맞는 음악 제안
-
 ## 🔧 개발 환경
 
 ### 백엔드 (Django)
@@ -78,14 +89,16 @@ healthwise-ai/
 - **프레임워크**: Django 5.2, DRF
 - **데이터베이스**: PostgreSQL 14
 - **캐시**: Redis 6
-- **AI**: OpenAI GPT API
+- **AI**: OpenAI GPT API, MediaPipe 0.10.21
+- **컴퓨터 비전**: OpenCV 4.11
 
 ### 프론트엔드 (React)
 - **언어**: TypeScript
 - **프레임워크**: React 18
 - **상태관리**: Context API
-- **스타일링**: Tailwind CSS
+- **스타일링**: Tailwind CSS, MUI
 - **빌드도구**: Vite
+- **AI**: MediaPipe Web (CDN)
 
 ## 📝 개발 워크플로우
 
@@ -95,6 +108,13 @@ healthwise-ai/
 # 새 패키지 설치 후
 docker-compose -f docker-compose.dev.yml build
 docker-compose -f docker-compose.dev.yml up -d
+```
+
+### AI 모델 업데이트
+```bash
+# MediaPipe 라이브러리 업데이트
+docker-compose -f docker-compose.dev.yml exec backend pip install --upgrade mediapipe
+docker-compose -f docker-compose.dev.yml restart backend
 ```
 
 ### 모델 변경시
@@ -108,6 +128,9 @@ docker-compose -f docker-compose.dev.yml restart backend
 # 로그 확인
 docker-compose -f docker-compose.dev.yml logs -f [service_name]
 
+# AI 기능 확인
+docker-compose -f docker-compose.dev.yml exec backend python -c "from apps.pose_analysis.utils.mediapipe_processor import MediaPipeProcessor; print('MediaPipe OK')"
+
 # 컨테이너 재시작
 docker-compose -f docker-compose.dev.yml restart [service_name]
 
@@ -116,24 +139,40 @@ docker-compose -f docker-compose.dev.yml down -v
 docker-compose -f docker-compose.dev.yml up --build -d
 ```
 
+## 🤖 AI 자세분석 사용법
+
+### 실시간 분석
+1. http://localhost:3000 접속
+2. "자세분석" 페이지 이동
+3. "실시간 분석" 탭 선택
+4. 카메라 권한 허용
+5. 운동 선택 후 "분석 시작" 클릭
+
+### 비디오 업로드 분석
+1. "비디오 업로드" 탭 선택
+2. 운동 비디오 파일 업로드
+3. 자동 분석 및 결과 확인
+
+### 지원 운동
+- **스쿼트**: 무릎 각도, 엉덩이 위치 분석
+- **푸쉬업**: 팔꿈치 각도, 몸통 일직선 분석
+- **플랭크**: 몸통 각도, 어깨 위치 분석
+- **런지**: 앞뒤 무릎 각도 분석
+- **버피**: 단계별 자세 분석
+
 ## 🌟 API 엔드포인트
 
-### 인증
+### 자세분석 API
+- `GET /api/pose-analysis/exercises/` - 운동 목록
+- `POST /api/pose-analysis/sessions/` - 분석 세션 생성
+- `POST /api/pose-analysis/sessions/{id}/analyze_frame/` - 실시간 프레임 분석
+- `POST /api/pose-analysis/sessions/analyze_video/` - 비디오 분석
+
+### 기존 API
 - `POST /api/auth/register/` - 회원가입
 - `POST /api/auth/login/` - 로그인
-- `POST /api/auth/logout/` - 로그아웃
-
-### 챗봇
 - `POST /api/guest/chatbot/` - AI 채팅 (게스트)
-- `POST /api/chatbot/` - AI 채팅 (인증)
-
-### 운동
 - `GET /api/guest/workout-logs/` - 운동 기록 조회
-- `POST /api/workout/logs/` - 운동 기록 생성
-
-### 영양
-- `GET /api/guest/nutrition-statistics/` - 영양 통계
-- `POST /api/nutrition/meals/` - 식사 기록
 
 ## 🔐 환경변수 설정
 
@@ -155,6 +194,19 @@ REACT_APP_API_URL=http://localhost:8000/api
 ```
 
 ## 🚨 문제 해결
+
+### MediaPipe 관련 문제
+```bash
+# MediaPipe 설치 확인
+docker-compose -f docker-compose.dev.yml exec backend pip list | grep mediapipe
+
+# MediaPipe 재설치
+docker-compose -f docker-compose.dev.yml exec backend pip install --force-reinstall mediapipe opencv-python-headless
+```
+
+### 카메라 접근 문제
+- **Chrome**: 설정 > 개인정보 보호 및 보안 > 사이트 설정 > 카메라
+- **HTTPS 필요**: 로컬 개발에서는 localhost로 접속
 
 ### 포트 충돌
 ```yaml
@@ -182,12 +234,35 @@ docker-compose -f docker-compose.dev.yml exec frontend npm install
 docker-compose -f docker-compose.dev.yml restart frontend
 ```
 
+## 📊 시스템 요구사항
+
+### 최소 요구사항
+- **RAM**: 4GB 이상
+- **CPU**: 2코어 이상
+- **저장공간**: 10GB 이상
+- **네트워크**: 브로드밴드 인터넷 (MediaPipe 모델 다운로드용)
+
+### 권장 요구사항
+- **RAM**: 8GB 이상
+- **CPU**: 4코어 이상
+- **GPU**: 웹캠 또는 외부 카메라
+- **브라우저**: Chrome 80+ (MediaPipe 최적화)
+
 ## 📞 지원
 
 문제 발생시 다음 정보와 함께 팀 채널에 문의:
 1. 오류 스크린샷
 2. `docker-compose -f docker-compose.dev.yml logs` 출력
 3. 운영체제 및 Docker 버전
+4. 사용 중인 브라우저 및 버전
+
+## 🆕 최근 업데이트
+
+- ✅ **MediaPipe 자세분석** 완전 구현
+- ✅ **실시간 카메라 분석** 지원
+- ✅ **비디오 업로드 분석** 지원
+- ✅ **운동별 맞춤 피드백** 시스템
+- ✅ **자동 환경 설정** 스크립트
 
 ## 📄 라이선스
 
@@ -197,4 +272,4 @@ docker-compose -f docker-compose.dev.yml restart frontend
 
 **개발팀**: amu-create  
 **프로젝트 시작**: 2025년 6월  
-**최신 업데이트**: 2025년 6월 27일
+**최신 업데이트**: 2025년 6월 27일 - MediaPipe AI 자세분석 완전 구현

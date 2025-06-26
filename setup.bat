@@ -110,6 +110,7 @@ set /p "start_docker="
 if /i not "!start_docker!"=="n" (
     echo %BLUE%🔨 Docker 컨테이너 빌드 및 시작 중...%NC%
     echo %YELLOW%   (첫 실행시 5-10분 소요될 수 있습니다)%NC%
+    echo %BLUE%   MediaPipe와 AI 라이브러리들을 다운로드합니다...%NC%
     
     docker-compose -f docker-compose.dev.yml up --build -d
     
@@ -122,10 +123,20 @@ if /i not "!start_docker!"=="n" (
     
     echo %GREEN%✅ Docker 컨테이너 시작 완료%NC%
     
+    :: 서비스 준비 대기
+    echo %BLUE%⏳ 서비스 초기화 대기 중...%NC%
+    timeout /t 15 /nobreak >nul
+    
     :: 컨테이너 상태 확인
     echo %BLUE%📊 컨테이너 상태 확인 중...%NC%
-    timeout /t 10 /nobreak >nul
     docker-compose -f docker-compose.dev.yml ps
+    
+    :: MediaPipe 설치 확인
+    echo %BLUE%🤖 AI 자세분석 기능 확인 중...%NC%
+    docker-compose -f docker-compose.dev.yml exec backend python -c "from apps.pose_analysis.utils.mediapipe_processor import MediaPipeProcessor; print('✅ MediaPipe 설치 확인 완료')" 2>nul
+    if errorlevel 1 (
+        echo %YELLOW%⚠️  MediaPipe가 아직 초기화 중입니다. 잠시 후 다시 확인하세요.%NC%
+    )
     
     echo.
     echo %GREEN%🎉 설정 완료! 다음 URL에서 접속하세요:%NC%
@@ -133,6 +144,11 @@ if /i not "!start_docker!"=="n" (
     echo %BLUE%   🔧 백엔드 API: http://localhost:8000/api%NC%
     echo %BLUE%   📊 관리자 페이지: http://localhost:8000/admin%NC%
     echo %BLUE%      - 개발용 계정: admin / admin123%NC%
+    echo.
+    echo %GREEN%🏃‍♂️ 새로운 기능:%NC%
+    echo %BLUE%   🤖 실시간 운동 자세분석 (MediaPipe AI)%NC%
+    echo %BLUE%   📹 비디오 업로드 분석%NC%
+    echo %BLUE%   💬 AI 챗봇 (OpenAI API 키 설정시)%NC%
     echo.
     echo %BLUE%📋 유용한 명령어:%NC%
     echo %BLUE%   - 로그 확인: docker-compose -f docker-compose.dev.yml logs -f%NC%

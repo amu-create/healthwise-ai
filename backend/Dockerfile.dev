@@ -1,7 +1,7 @@
 # 멀티스테이지 빌드로 이미지 크기 최소화
 FROM python:3.11-slim-bullseye as builder
 
-# 필수 패키지만 설치
+# 빌드 의존성 설치
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
@@ -17,11 +17,17 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /tmp/wheels -r /tmp/requireme
 # 실행 스테이지
 FROM python:3.11-slim-bullseye
 
-# 런타임 의존성 설치 (dos2unix 추가)
+# 런타임 의존성 설치 (MediaPipe용 라이브러리 포함)
 RUN apt-get update && apt-get install -y \
     libpq5 \
     netcat \
     dos2unix \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    libgomp1 \
+    libgcc-s1 \
     && rm -rf /var/lib/apt/lists/*
 
 # wheels 복사 및 설치

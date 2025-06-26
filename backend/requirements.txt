@@ -11,7 +11,7 @@ torch
 torchvision
 torchaudio
 sentence-transformers
-numpy
+numpy>=1.21.0
 redis
 django-redis
 celery
@@ -24,3 +24,8 @@ psycopg2-binary
 channels
 channels-redis
 daphne
+
+# MediaPipe for pose analysis (fixed versions for compatibility)
+mediapipe==0.10.21
+opencv-python-headless==4.11.0.86
+protobuf>=4.25.3,<5.0
