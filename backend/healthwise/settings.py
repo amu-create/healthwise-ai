@@ -322,6 +322,10 @@ except ImportError:
     }
 
 # Logging
+# logs 디렉토리 생성
+LOGS_DIR = BASE_DIR / 'logs'
+LOGS_DIR.mkdir(exist_ok=True)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -346,7 +350,7 @@ LOGGING = {
         },
         'file': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': BASE_DIR / 'debug.log',
+            'filename': str(LOGS_DIR / 'debug.log'),  # str()로 변환
             'formatter': 'verbose',
             'level': 'DEBUG',
             'encoding': 'utf-8',

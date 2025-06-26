@@ -38,12 +38,17 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
+      cache_from:
+        - healthwise_backend:latest
+    image: healthwise_backend:latest
     container_name: healthwise_backend
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./backend:/app
       - media_volume:/app/media
       - static_volume:/app/staticfiles
+      # pip 캐시 보존
+      - pip_cache:/root/.cache/pip
     ports:
       - "8000:8000"
     depends_on:
@@ -55,8 +60,7 @@ services:
       - DEBUG=True
       - DATABASE_URL=postgresql://developer:devpass123@db:5432/healthwise_dev
       - REDIS_URL=redis://redis:6379/1
-      - DJANGO_SETTINGS_MODULE=healthwise.settings_docker
-      - REDIS_HOST=redis
+      - DJANGO_SETTINGS_MODULE=healthwise.settings_dev
       - ALLOWED_HOSTS=*
       - CORS_ALLOW_ALL_ORIGINS=True
     env_file:
@@ -69,10 +73,15 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
+      cache_from:
+        - healthwise_frontend:latest
+    image: healthwise_frontend:latest
     container_name: healthwise_frontend
     volumes:
       - ./frontend:/app
       - /app/node_modules
+      # npm 캐시 보존
+      - npm_cache:/root/.npm
     ports:
       - "3000:3000"
     environment:
@@ -92,3 +101,5 @@ volumes:
   redis_data:
   media_volume:
   static_volume:
+  pip_cache:
+  npm_cache:
