@@ -23,11 +23,11 @@ python manage.py migrate
 
 # Custom apps migrations
 echo "Migrating custom apps..."
-python manage.py migrate core
-python manage.py migrate social
-python manage.py migrate workout
-python manage.py migrate pose_analysis
-python manage.py migrate achievements
+python manage.py migrate core || true
+python manage.py migrate social || true
+python manage.py migrate workout || true
+python manage.py migrate pose_analysis || true
+python manage.py migrate achievements || true
 
 echo "Creating cache table..."
 python manage.py createcachetable
