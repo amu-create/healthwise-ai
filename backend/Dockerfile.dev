@@ -1,29 +1,51 @@
-FROM python:3.10-slim
+# 멀티스테이지 빌드로 이미지 크기 최소화
+FROM python:3.11-slim-bullseye as builder
 
-# 시스템 의존성 설치
+# 필수 패키지만 설치
 RUN apt-get update && apt-get install -y \
     gcc \
-    g++ \
     libpq-dev \
-    netcat-traditional \
     && rm -rf /var/lib/apt/lists/*
 
+# pip 업그레이드 및 캐시 활용
+RUN pip install --upgrade pip
+
+# requirements 복사 및 의존성 설치
+COPY requirements.txt /tmp/
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /tmp/wheels -r /tmp/requirements.txt
+
+# 실행 스테이지
+FROM python:3.11-slim-bullseye
+
+# 런타임 의존성 설치
+RUN apt-get update && apt-get install -y \
+    libpq5 \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
+
+# wheels 복사 및 설치
+COPY --from=builder /tmp/wheels /tmp/wheels
+COPY requirements.txt /tmp/
+RUN pip install --no-cache /tmp/wheels/*
+
+# 작업 디렉토리 설정
 WORKDIR /app
 
-# Python 의존성 설치
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 개발 모드용 추가 패키지
-RUN pip install --no-cache-dir \
-    ipython \
-    django-debug-toolbar \
-    django-extensions
-
-# entrypoint 스크립트
-COPY docker-entrypoint.sh /
+# wait-for-db 스크립트 추가
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
-EXPOSE 8000
+# 애플리케이션 코드 복사
+COPY . /app/
+
+# 비root 사용자로 실행
+RUN useradd -m -u 1000 django && chown -R django:django /app
+USER django
+
+# 환경변수 설정
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PATH="/home/django/.local/bin:$PATH"
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
