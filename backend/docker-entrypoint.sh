@@ -18,22 +18,22 @@ mkdir -p /app/logs
 chmod 777 /app/logs
 
 echo "Running migrations..."
-echo "Migrating core Django apps..."
-python manage.py migrate
+# 마이그레이션 파일 생성
+python manage.py makemigrations --noinput || true
+python manage.py makemigrations core --noinput || true
+python manage.py makemigrations social --noinput || true
+python manage.py makemigrations workout --noinput || true
+python manage.py makemigrations pose_analysis --noinput || true
+python manage.py makemigrations achievements --noinput || true
 
-# Custom apps migrations
-echo "Migrating custom apps..."
-python manage.py migrate core || true
-python manage.py migrate social || true
-python manage.py migrate workout || true
-python manage.py migrate pose_analysis || true
-python manage.py migrate achievements || true
+# 전체 마이그레이션 실행
+python manage.py migrate --noinput || true
 
 echo "Creating cache table..."
-python manage.py createcachetable
+python manage.py createcachetable || true
 
 echo "Collecting static files..."
-python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput || true
 
 echo "Starting server..."
 exec "$@"
