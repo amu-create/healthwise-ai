@@ -1,59 +1,73 @@
 """
-Development settings for HealthWise project.
+Django settings for Docker development environment.
+Inherits from base settings and overrides for Docker.
 """
+
 from .settings import *
 import os
 
-# Disable file logging in Docker environment
-if 'handlers' in LOGGING and 'file' in LOGGING['handlers']:
-    LOGGING['handlers'].pop('file', None)
-    LOGGING['root']['handlers'] = ['console']
-    for logger in LOGGING['loggers'].values():
-        logger['handlers'] = ['console']
+# Docker 환경에서 DATABASE_URL 사용
+if os.environ.get('DATABASE_URL'):
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 
-# Database configuration for Docker
-DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL:
-    # Parse database URL manually
-    import re
-    match = re.match(r'postgresql://([^:]+):([^@]+)@([^:]+):(\d+)/(.+)', DATABASE_URL)
-    if match:
-        user, password, host, port, name = match.groups()
-        DATABASES['default'] = {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': name,
-            'USER': user,
-            'PASSWORD': password,
-            'HOST': host,
-            'PORT': port,
+# Docker 환경에서 Redis URL 사용
+if os.environ.get('REDIS_URL'):
+    CHANNEL_LAYERS['default']['CONFIG']['hosts'] = [os.environ.get('REDIS_URL')]
+    
+    # Cache 설정도 업데이트
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': os.environ.get('REDIS_URL'),
+            'OPTIONS': {
+                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+                'CONNECTION_POOL_KWARGS': {'max_connections': 50},
+                'SOCKET_CONNECT_TIMEOUT': 5,
+                'SOCKET_TIMEOUT': 5,
+                'COMPRESSOR': 'django_redis.compressors.zlib.ZlibCompressor',
+                'IGNORE_EXCEPTIONS': True,
+            },
+            'KEY_PREFIX': 'healthwise',
+            'TIMEOUT': 3600,
         }
+    }
 
-# Redis configuration for Docker
-REDIS_URL = os.environ.get('REDIS_URL')
-if REDIS_URL:
-    # Parse Redis URL
-    import re
-    match = re.match(r'redis://([^:]+):(\d+)/(\d+)', REDIS_URL)
-    if match:
-        host, port, db = match.groups()
-        CHANNEL_LAYERS['default']['CONFIG']['hosts'] = [(host, int(port))]
-        
-        # Update cache configuration
-        try:
-            import django_redis
-            CACHES['default']['LOCATION'] = REDIS_URL
-        except ImportError:
-            pass
+# Docker 환경에서는 정적 파일 디렉토리를 동적으로 생성
+STATICFILES_DIRS = []
 
-# Static files - ensure directories exist
-STATIC_ROOT = '/tmp/staticfiles'
-MEDIA_ROOT = '/tmp/media'
+# 존재하는 디렉토리만 추가
+static_dirs = [
+    BASE_DIR / 'static',
+    BASE_DIR / 'frontend' / 'build' / 'static',
+    BASE_DIR / 'frontend' / 'build',
+]
 
-# Ensure DEBUG is True for development
-DEBUG = True
+for static_dir in static_dirs:
+    if static_dir.exists():
+        STATICFILES_DIRS.append(static_dir)
 
-# Allow all hosts in development
-ALLOWED_HOSTS = ['*']
+# Docker 환경에서 로그 설정
+LOGGING['handlers']['file']['filename'] = '/app/logs/debug.log'
 
-# Disable CSRF for development
-CSRF_TRUSTED_ORIGINS = ['http://localhost:*', 'http://127.0.0.1:*', 'http://0.0.0.0:*']
+# 호스트 설정 확장
+ALLOWED_HOSTS.extend(['backend', 'frontend', 'nginx', 'host.docker.internal'])
+
+# CORS 설정 확장
+CORS_ALLOWED_ORIGINS.extend([
+    "http://frontend:3000",
+    "http://backend:8000",
+    "http://host.docker.internal:3000",
+    "http://host.docker.internal:8000",
+])
+
+print("=" * 50)
+print("Django Settings Loaded for Docker Development")
+print(f"DEBUG: {DEBUG}")
+print(f"DATABASE: {DATABASES['default']['ENGINE']}")
+print(f"STATIC_ROOT: {STATIC_ROOT}")
+print(f"STATICFILES_DIRS: {STATICFILES_DIRS}")
+print("=" * 50)
