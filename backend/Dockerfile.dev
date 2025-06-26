@@ -38,14 +38,17 @@ RUN chmod +x /docker-entrypoint.sh
 # 애플리케이션 코드 복사
 COPY . /app/
 
-# 비root 사용자로 실행
-RUN useradd -m -u 1000 django && chown -R django:django /app
-USER django
+# 로그 파일을 위한 디렉토리 생성
+RUN mkdir -p /app/logs && chmod 777 /app/logs
+
+# 비root 사용자로 실행 (Windows 볼륨 마운트 문제 해결을 위해 제거)
+# RUN useradd -m -u 1000 django && chown -R django:django /app
+# USER django
 
 # 환경변수 설정
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PATH="/home/django/.local/bin:$PATH"
+    PATH="/usr/local/bin:$PATH"
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

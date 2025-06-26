@@ -22,8 +22,8 @@ import Chat from './pages/Chat';
 import Profile from './pages/Profile';
 import AIWorkout from './pages/AIWorkout';
 import AINutrition from './pages/AINutrition';
-import Achievements from './pages/Achievements';
-import FollowingAchievements from './pages/FollowingAchievements';
+// import Achievements from './pages/Achievements';
+// import FollowingAchievements from './pages/FollowingAchievements';
 import Social from './pages/Social';
 import NotificationCenterPage from './pages/NotificationCenterPage';
 import NotificationSettingsPage from './pages/NotificationSettingsPage';
@@ -180,8 +180,8 @@ function AppContent() {
             <Route path="/exercise" element={<Exercise />} />
             <Route path="/nutrition" element={<Nutrition />} />
             <Route path="/ai-nutrition" element={<AINutrition />} />
-            <Route path="/achievements" element={<Achievements />} />
-            <Route path="/achievements/following" element={<FollowingAchievements />} />
+            {/* <Route path="/achievements" element={<Achievements />} />
+            <Route path="/achievements/following" element={<FollowingAchievements />} /> */}
             <Route path="/social" element={<Social />} />
             <Route path="/notifications" element={<NotificationCenterPage />} />
             <Route path="/notifications/settings" element={<NotificationSettingsPage />} />

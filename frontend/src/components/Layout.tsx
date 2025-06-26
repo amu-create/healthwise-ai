@@ -27,7 +27,7 @@ import {
   Dashboard,
   FitnessCenter,
   Restaurant,
-  Map,
+  // Map,
   MusicNote,
   Chat,
   Person,
@@ -38,7 +38,7 @@ import {
   Login as LoginIcon,
   PersonAdd as RegisterIcon,
   Refresh as RefreshIcon,
-  EmojiEvents,
+  // EmojiEvents,
   ExpandLess,
   ExpandMore,
   OndemandVideo,
@@ -181,12 +181,12 @@ const Layout: React.FC = () => {
         },
       ]
     },
-    { 
+    /* { 
       text: t('pages.achievements.title'), 
       icon: <EmojiEvents />, 
       path: '/achievements',
       guestAccess: false 
-    },
+    }, */
     { 
       text: t('navigation.social'), 
       icon: <People />, 

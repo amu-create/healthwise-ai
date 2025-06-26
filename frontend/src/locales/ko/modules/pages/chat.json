@@ -16,5 +16,14 @@
   "deleteAllTitle": "대화 내역 삭제",
   "deleteConfirm": "모든 대화 내역을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
   "limitExceededTitle": "사용 제한",
-  "limitExceededMessage": "회원가입 후 무제한으로 이용하실 수 있습니다."
+  "limitExceededMessage": "회원가입 후 무제한으로 이용하실 수 있습니다.",
+  "noHistory": "대화 내역이 없습니다",
+  "renameDialog": {
+    "title": "대화 이름 변경",
+    "newName": "새 이름"
+  },
+  "deleteDialog": {
+    "title": "대화 삭제",
+    "message": "이 대화를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+  }
 }
