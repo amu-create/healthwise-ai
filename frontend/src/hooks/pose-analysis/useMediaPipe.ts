@@ -6,7 +6,8 @@ import {
   drawPose, 
   POSE_CONNECTIONS,
   normalizeCoordinates,
-  AngleTracker
+  AngleTracker,
+  cleanupPose
 } from '../../services/pose-analysis/mediapipeUtils';
 import { analyzeFrame, createAnalysisSession, completeSession } from '../../services/pose-analysis/poseAnalysisService';
 
@@ -191,13 +192,9 @@ export const useMediaPipe = ({ exercise, onResults, mode = 'realtime', onVideoEn
       return;
     }
     
-    // 기존 인스턴스 정리
+    // 기존 인스턴스 정리 - close() 호출 제거
     if (poseRef.current) {
-      try {
-        poseRef.current.close();
-      } catch (e) {
-        console.warn('Error closing previous pose instance:', e);
-      }
+      console.log('Existing pose instance found, will be reused');
       poseRef.current = null;
     }
     
@@ -214,7 +211,7 @@ export const useMediaPipe = ({ exercise, onResults, mode = 'realtime', onVideoEn
     }
     
     try {
-      // Pose 초기화
+      // Pose 초기화 - mediapipeUtils의 캐싱 기능 활용
       const pose = await initializePose();
       pose.onResults(onPoseResults);
       poseRef.current = pose;
@@ -230,7 +227,11 @@ export const useMediaPipe = ({ exercise, onResults, mode = 'realtime', onVideoEn
         const camera = new window.Camera(videoRef.current, {
           onFrame: async () => {
             if (poseRef.current && videoRef.current && !processingRef.current) {
-              await poseRef.current.send({ image: videoRef.current });
+              try {
+                await poseRef.current.send({ image: videoRef.current });
+              } catch (error) {
+                console.error('Error sending frame to pose:', error);
+              }
             }
           },
           width: 1280,
@@ -252,10 +253,10 @@ export const useMediaPipe = ({ exercise, onResults, mode = 'realtime', onVideoEn
     try {
       // 세션 생성
       console.log('Starting analysis with exercise:', exercise);
-      const exerciseId = typeof exercise.id === 'string' ? parseInt(exercise.id) : exercise.id;
+      const exerciseId = exercise.id;
       console.log('Exercise ID for session:', exerciseId, 'Type:', typeof exerciseId);
       
-      if (!exerciseId || isNaN(exerciseId)) {
+      if (!exerciseId || typeof exerciseId !== 'number') {
         console.error('Invalid exercise ID:', exerciseId);
         throw new Error('Invalid exercise ID');
       }
@@ -469,14 +470,8 @@ export const useMediaPipe = ({ exercise, onResults, mode = 'realtime', onVideoEn
         cameraRef.current.stop();
         cameraRef.current = null;
       }
-      if (poseRef.current) {
-        try {
-          poseRef.current.close();
-        } catch (e) {
-          console.warn('Error closing pose instance:', e);
-        }
-        poseRef.current = null;
-      }
+      // Pose 인스턴스는 cleanupPose로 처리
+      poseRef.current = null;
     };
   }, [initializeMediaPipe]);
   

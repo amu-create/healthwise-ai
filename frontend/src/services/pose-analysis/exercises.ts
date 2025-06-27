@@ -7,7 +7,7 @@ export type { Exercise };
 // 상체 운동
 const upperBodyExercises: Exercise[] = [
   {
-    id: 'pushup',
+    id: 1,
     name: '푸시업',
     nameEn: 'Push-up',
     category: 'upper',
@@ -43,7 +43,7 @@ const upperBodyExercises: Exercise[] = [
     ]
   },
   {
-    id: 'bicepCurl',
+    id: 2,
     name: '바이셉 컬',
     nameEn: 'Bicep Curl',
     category: 'upper',
@@ -77,7 +77,7 @@ const upperBodyExercises: Exercise[] = [
 // 하체 운동
 const lowerBodyExercises: Exercise[] = [
   {
-    id: 'squat',
+    id: 3,
     name: '스쿼트',
     nameEn: 'Squat',
     category: 'lower',
@@ -113,7 +113,7 @@ const lowerBodyExercises: Exercise[] = [
     ]
   },
   {
-    id: 'lunge',
+    id: 4,
     name: '런지',
     nameEn: 'Lunge',
     category: 'lower',
@@ -153,7 +153,7 @@ const lowerBodyExercises: Exercise[] = [
 // 코어 운동
 const coreExercises: Exercise[] = [
   {
-    id: 'plank',
+    id: 5,
     name: '플랭크',
     nameEn: 'Plank',
     category: 'core',
@@ -187,7 +187,7 @@ const coreExercises: Exercise[] = [
 // 전신 운동
 const fullBodyExercises: Exercise[] = [
   {
-    id: 'burpee',
+    id: 6,
     name: '버피',
     nameEn: 'Burpee',
     category: 'fullbody',
@@ -242,7 +242,7 @@ export const exerciseCategories = [
 ];
 
 // ID로 운동 찾기
-export function getExerciseById(id: string): Exercise | undefined {
+export function getExerciseById(id: number): Exercise | undefined {
   return allExercises.find(exercise => exercise.id === id);
 }
 

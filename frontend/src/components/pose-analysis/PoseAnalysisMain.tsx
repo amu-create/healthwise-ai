@@ -42,6 +42,7 @@ import { useTranslation } from 'react-i18next';
 import { useMediaPipe } from '../../hooks/pose-analysis/useMediaPipe';
 import { allExercises, exerciseCategories, getExercisesByCategory } from '../../services/pose-analysis/exercises';
 import { getExercises } from '../../services/pose-analysis/poseAnalysisService';
+import { cleanupPose } from '../../services/pose-analysis/mediapipeUtils';
 import ExerciseSelector from './ExerciseSelector';
 import VideoUpload from './VideoUpload';
 import RealtimeFeedback from './RealtimeFeedback';
@@ -295,9 +296,9 @@ const PoseAnalysisMain: React.FC = () => {
         console.error('Error fetching exercises:', error);
         // 오류 시 프론트엔드 더미 데이터 사용
         console.log('Using dummy data...');
-        const dummyExercises = allExercises.map((ex, index) => ({
+        const dummyExercises = allExercises.map((ex) => ({
           ...ex,
-          id: index + 1, // 숫자 ID로 변환
+          // id는 이미 number 타입이므로 변환 불필요
           target_muscles: ex.targetMuscles, // API 형식에 맞게 변환
           key_points: ex.keyPoints,
           name_en: ex.nameEn
@@ -313,6 +314,12 @@ const PoseAnalysisMain: React.FC = () => {
     };
 
     fetchExercises();
+    
+    // 컴포넌트 언마운트 시 cleanup
+    return () => {
+      console.log('PoseAnalysisMain unmounting, cleaning up MediaPipe...');
+      cleanupPose();
+    };
   }, []);
 
   const averageScore = analysisFrames.length > 0

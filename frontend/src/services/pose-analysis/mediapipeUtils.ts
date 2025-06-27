@@ -7,6 +7,9 @@ declare global {
 
 const Pose = window.Pose;
 
+// MediaPipe 인스턴스 캠시
+let poseInstance: any = null;
+
 // MediaPipe POSE_CONNECTIONS 정의
 const POSE_CONNECTIONS = [
   [0, 1], [1, 2], [2, 3], [3, 7], [0, 4], [4, 5], [5, 6], [6, 8], [9, 10],
@@ -31,7 +34,7 @@ export interface AngleConfig {
 }
 
 export interface Exercise {
-  id: string;
+  id: number;  // string에서 number로 변경
   name: string;
   nameEn: string;
   category: string;
@@ -189,11 +192,11 @@ function calculateScore(angle: number, minAngle: number, maxAngle: number): numb
 }
 
 // 운동별 상세 피드백 생성
-function generateDetailedFeedback(exerciseId: string, angles: Record<string, number>): string[] {
+function generateDetailedFeedback(exerciseId: number, angles: Record<string, number>): string[] {
   const feedback: string[] = [];
   
   switch (exerciseId) {
-    case 'squat':
+    case 3: // squat
       const kneeAngle = angles.knee || 180;
       const hipAngle = angles.hip || 180;
       
@@ -210,7 +213,7 @@ function generateDetailedFeedback(exerciseId: string, angles: Record<string, num
       }
       break;
       
-    case 'pushup':
+    case 1: // pushup
       const elbowAngle = angles.elbow || 180;
       
       if (elbowAngle > 100 && elbowAngle < 170) {
@@ -220,7 +223,7 @@ function generateDetailedFeedback(exerciseId: string, angles: Record<string, num
       }
       break;
       
-    case 'lunge':
+    case 4: // lunge
       const frontKneeAngle = angles.frontKnee || 180;
       
       if (frontKneeAngle < 70) {
@@ -232,7 +235,7 @@ function generateDetailedFeedback(exerciseId: string, angles: Record<string, num
       }
       break;
       
-    case 'plank':
+    case 5: // plank
       const backAngle = angles.back || 180;
       const shoulderAngle = angles.shoulder || 90;
       
@@ -249,7 +252,7 @@ function generateDetailedFeedback(exerciseId: string, angles: Record<string, num
       }
       break;
       
-    case 'burpee':
+    case 6: // burpee
       const standingAngle = angles.standing || 180;
       
       if (standingAngle >= 170) {
@@ -269,22 +272,50 @@ export async function initializePose() {
     throw new Error('MediaPipe Pose not loaded');
   }
   
-  const pose = new window.Pose({
-    locateFile: (file: string) => {
-      return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+  // 기존 인스턴스가 있으면 재사용
+  if (poseInstance) {
+    console.log('Reusing existing Pose instance');
+    return poseInstance;
+  }
+  
+  try {
+    const pose = new window.Pose({
+      locateFile: (file: string) => {
+        return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+      }
+    });
+    
+    await pose.setOptions({
+      modelComplexity: 1,
+      smoothLandmarks: true,
+      enableSegmentation: false,
+      smoothSegmentation: false,
+      minDetectionConfidence: 0.5,
+      minTrackingConfidence: 0.5
+    });
+    
+    // 성공적으로 생성되면 캠시
+    poseInstance = pose;
+    console.log('Pose instance created and cached');
+    
+    return pose;
+  } catch (error) {
+    console.error('Error initializing Pose:', error);
+    throw error;
+  }
+}
+
+// Pose 인스턴스 정리 함수 추가
+export function cleanupPose() {
+  if (poseInstance) {
+    try {
+      poseInstance.close();
+      console.log('Pose instance closed');
+    } catch (error) {
+      console.warn('Error closing Pose instance:', error);
     }
-  });
-  
-  await pose.setOptions({
-    modelComplexity: 1,
-    smoothLandmarks: true,
-    enableSegmentation: false,
-    smoothSegmentation: false,
-    minDetectionConfidence: 0.5,
-    minTrackingConfidence: 0.5
-  });
-  
-  return pose;
+    poseInstance = null;
+  }
 }
 
 // 포즈 그리기 함수

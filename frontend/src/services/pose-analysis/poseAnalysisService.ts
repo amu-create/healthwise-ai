@@ -43,12 +43,17 @@ export const createAnalysisSession = async (exerciseId: number, mode: 'realtime'
   try {
     // 실시간 분석의 경우 JSON으로 전송
     if (mode === 'realtime') {
+      const requestData = {
+        exercise: exerciseId,  // Django는 ID를 받아서 자동으로 객체로 변환함
+        mode: mode
+      };
+      console.log('Creating analysis session with data:', requestData);
+      console.log('Exercise ID type:', typeof exerciseId);
+      console.log('Request data JSON:', JSON.stringify(requestData));
+      
       const response = await api.post(
         '/pose-analysis/sessions/', 
-        {
-          exercise: exerciseId,
-          mode: mode
-        }
+        requestData
       );
       return response.data;
     } else {

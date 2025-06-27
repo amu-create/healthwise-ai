@@ -197,6 +197,10 @@ def youtube_search(request):
     
     try:
         url = "https://www.googleapis.com/youtube/v3/search"
+        # 운동 관련 키워드 추가
+        if 'workout' not in query.lower() and 'exercise' not in query.lower() and 'fitness' not in query.lower():
+            query = f"{query} workout music mix"
+        
         params = {
             'part': 'snippet',
             'maxResults': max_results,
@@ -326,14 +330,14 @@ def get_default_search_results(query):
     # 운동 종류별 기본 음악 추천
     workout_music = {
         'running': [
-            {'id': 'dQw4w9WgXcQ', 'title': 'Running Motivation Mix 2024', 'channel': 'Workout Music'},
-            {'id': 'ZbZSe6N_BXs', 'title': 'Best Running Songs 140-180 BPM', 'channel': 'Fitness Beats'},
-            {'id': 'Y2V6yjjPbX0', 'title': 'Epic Running Music Mix', 'channel': 'Sport Music'},
+            {'id': 'gJLIiF15wjQ', 'title': 'Running Motivation Mix 2024', 'channel': 'Workout Music'},
+            {'id': 'HgzGwKwLmgM', 'title': 'Best Running Songs 140-180 BPM', 'channel': 'Fitness Beats'},
+            {'id': '7wtfhZwyrcc', 'title': 'Epic Running Music Mix', 'channel': 'Sport Music'},
         ],
         'yoga': [
-            {'id': 'hlWiI4xVXKY', 'title': 'Relaxing Yoga Music', 'channel': 'Meditation Relax Music'},
-            {'id': '1ZYbU82GVz4', 'title': 'Morning Yoga Flow Music', 'channel': 'Yoga Music'},
-            {'id': 'lCOF9LN_Zxs', 'title': 'Peaceful Yoga Meditation', 'channel': 'Calm Music'},
+            {'id': 'v7AYKMP6rOE', 'title': 'Relaxing Yoga Music', 'channel': 'Meditation Relax Music'},
+            {'id': 'UBMk30rjy0o', 'title': 'Morning Yoga Flow Music', 'channel': 'Yoga Music'},
+            {'id': 'xqvCmoLULNY', 'title': 'Peaceful Yoga Meditation', 'channel': 'Calm Music'},
         ],
         'gym': [
             {'id': '7wtfhZwyrcc', 'title': 'Gym Workout Music Mix 2024', 'channel': 'Gym Music'},
@@ -341,9 +345,9 @@ def get_default_search_results(query):
             {'id': 'HgzGwKwLmgM', 'title': 'Heavy Metal Workout Mix', 'channel': 'Metal Gym'},
         ],
         'default': [
-            {'id': 'dQw4w9WgXcQ', 'title': 'Workout Motivation Mix', 'channel': 'Fitness Music'},
-            {'id': 'ZbZSe6N_BXs', 'title': 'Best Exercise Music 2024', 'channel': 'Workout Channel'},
-            {'id': 'Y2V6yjjPbX0', 'title': 'Ultimate Training Playlist', 'channel': 'Sport Music'},
+            {'id': 'gJLIiF15wjQ', 'title': 'Workout Motivation Mix', 'channel': 'Fitness Music'},
+            {'id': '7wtfhZwyrcc', 'title': 'Best Exercise Music 2024', 'channel': 'Workout Channel'},
+            {'id': 'HgzGwKwLmgM', 'title': 'Ultimate Training Playlist', 'channel': 'Sport Music'},
         ]
     }
     

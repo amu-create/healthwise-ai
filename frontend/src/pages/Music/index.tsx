@@ -463,16 +463,21 @@ const MusicRecommendation: React.FC = () => {
                       onClick={() => setCurrentVideoIndex(index)}
                     >
                       <CardMedia
-                        component="img"
-                        sx={{ 
-                          width: 160, 
-                          height: 90,
-                          objectFit: 'cover',
-                          flexShrink: 0,
-                        }}
-                        image={video.thumbnail}
-                        alt={video.title}
-                      />
+                      component="img"
+                      sx={{ 
+                      width: 160, 
+                      height: 90,
+                      objectFit: 'cover',
+                      flexShrink: 0,
+                      }}
+                      image={video.thumbnail}
+                      alt={video.title}
+                        onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null;
+                        target.src = '/images/default-music-thumbnail.svg';
+                      }}
+                    />
                       <CardContent sx={{ 
                         p: 2, 
                         flex: 1,

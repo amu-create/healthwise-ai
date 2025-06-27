@@ -9,6 +9,7 @@ import notifications from './modules/notifications.json';
 import signup from './modules/signup.json';
 import home from './modules/home.json';
 import errors from './modules/errors.json';
+import messages from './modules/messages.json';
 
 // 랜딩 페이지 모듈
 import landingHero from './modules/landing/hero.json';
@@ -42,6 +43,7 @@ const translation = {
     signup,
     home,
     errors,
+    messages,
     landing: {
       hero: landingHero,
       features: landingFeatures,
