@@ -46,6 +46,11 @@ class AuthService {
 
   // 로그인
   async login(data: LoginData) {
+    // 게스트 상태 먼저 제거
+    localStorage.removeItem('isGuest');
+    localStorage.removeItem('guestLimits');
+    sessionStorage.removeItem('guest_id');
+    
     const response = await api.post('/auth/login/', data);
     if (response.data.access && response.data.refresh) {
       // JWT 토큰 방식
@@ -62,6 +67,10 @@ class AuthService {
         console.log('Session ID received:', response.data.session_id);
       }
     }
+    
+    // 로그인 성공 시 isAuthenticated 플래그 설정
+    localStorage.setItem('isAuthenticated', 'true');
+    
     return response.data;
   }
 

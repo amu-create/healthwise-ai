@@ -35,6 +35,13 @@ class TokenManager {
   }
 
   isAuthenticated(): boolean {
+    // 게스트 상태 확인 - 게스트면 무조건 false
+    const isGuest = localStorage.getItem('isGuest') === 'true';
+    if (isGuest) {
+      console.log('[TokenManager] Guest user detected, returning false');
+      return false;
+    }
+
     // JWT 토큰이 있거나 세션 인증이 있는 경우
     if (this.accessToken) {
       return true;
@@ -58,6 +65,7 @@ class TokenManager {
       hasAccessToken: !!this.accessToken,
       hasSessionCookie,
       isAuthenticatedFlag,
+      isGuest,
       result
     });
     

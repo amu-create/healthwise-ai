@@ -248,10 +248,23 @@ const AIWorkoutRoutine: React.FC = () => {
       const response = await api.get('/workout-logs/', {
         params: { date_from: today, date_to: today }
       });
+      
+      // response.data가 배열인지 확인
+      let workoutLogs = [];
+      if (Array.isArray(response.data)) {
+        workoutLogs = response.data;
+      } else if (response.data.results && Array.isArray(response.data.results)) {
+        // 페이지네이션 응답인 경우
+        workoutLogs = response.data.results;
+      } else if (response.data.data && Array.isArray(response.data.data)) {
+        // data 필드에 배열이 있는 경우
+        workoutLogs = response.data.data;
+      }
+      
       // 오늘 완료한 루틴 ID들 추출
-      const completedIds = response.data
-        .filter((log: any) => log.routine)
-        .map((log: any) => log.routine);
+      const completedIds = workoutLogs
+        .filter((log: any) => log.routine || log.routine_id)
+        .map((log: any) => log.routine || log.routine_id);
       
       // localStorage와 비교하여 병합 (중복 제거)
       const storageCompletedRoutines = completedRoutines;

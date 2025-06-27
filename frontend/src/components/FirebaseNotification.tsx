@@ -16,19 +16,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { useTranslation } from 'react-i18next';
 import api from '../services/api';
+import { firebaseConfig, isFirebaseConfigured } from '../config/firebase';
 
-// Firebase 설정 (환경 변수에서 가져오기)
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID
-};
-
-// Firebase 앱 초기화
-const app = initializeApp(firebaseConfig);
+// Firebase 앱 초기화 - 설정이 있는 경우에만
+const app = isFirebaseConfigured() ? initializeApp(firebaseConfig) : null;
 
 interface NotificationData {
   title: string;
@@ -51,13 +42,19 @@ const FirebaseNotification: React.FC = () => {
   const [messaging, setMessaging] = useState<Messaging | null>(null);
 
   useEffect(() => {
+    // Firebase가 설정되지 않은 경우 스킵
+    if (!isFirebaseConfigured() || !app) {
+      console.log('Firebase is not configured. Skipping notification setup.');
+      return;
+    }
+    
     // Firebase Messaging 지원 확인
     const checkMessagingSupport = async () => {
       try {
         const supported = await isSupported();
         setIsMessagingSupported(supported);
         
-        if (supported) {
+        if (supported && app) {
           const messagingInstance = getMessaging(app);
           setMessaging(messagingInstance);
           
@@ -200,6 +197,11 @@ const FirebaseNotification: React.FC = () => {
     }
     setSnackbarOpen(false);
   };
+
+  // Firebase가 설정되지 않은 경우 아무것도 렌더링하지 않음
+  if (!isFirebaseConfigured() || !app) {
+    return null;
+  }
 
   // 알림 기능이 지원되지 않는 경우 아무것도 렌더링하지 않음
   if (!isMessagingSupported) {
