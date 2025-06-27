@@ -53,13 +53,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'channels',  # Django Channels
-    # Local apps
-    'apps.core',
-    'apps.api',
-    'apps.social',
-    'apps.pose_analysis',
-    'apps.workout',
-    'apps.achievements',
+    # Local apps - 순서가 중요합니다!
+    'apps.core',           # User 모델 (다른 앱이 참조)
+    'apps.workout',        # 독립적인 운동 관련 모델
+    'apps.pose_analysis',  # 독립적인 자세 분석
+    'apps.api',           # workout을 참조할 수 있음
+    'apps.social',        # workout과 api를 참조
+    'apps.achievements',  # 다른 앱들을 참조
 ]
 
 MIDDLEWARE = [
