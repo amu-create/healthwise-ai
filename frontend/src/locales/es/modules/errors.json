@@ -1,0 +1,13 @@
+{
+  "general": "Se produjo un error. Por favor, inténtalo de nuevo.",
+  "network": "Por favor, verifica tu conexión a internet.",
+  "auth": "Se requiere autenticación. Por favor, inicia sesión nuevamente.",
+  "notFound": "El recurso solicitado no fue encontrado.",
+  "permission": "No tienes permiso.",
+  "validation": "Por favor, verifica tu entrada.",
+  "serverError": "Se produjo un error en el servidor.",
+  "fetchFailed": "Error al cargar los datos.",
+  "createPostFailed": "Error al crear la publicación.",
+  "commentFailed": "Error al añadir el comentario.",
+  "deleteFailed": "Error al eliminar."
+}

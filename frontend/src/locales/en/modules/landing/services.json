@@ -1,0 +1,47 @@
+{
+  "title": "Our Innovative",
+  "titleHighlight": "Features",
+  "subtitle": "Taking care of your health with AI technology",
+  "features": [
+    {
+      "title": "AI Chatbot Consultation",
+      "description": "24-hour health consultation and personalized advice",
+      "limit": "Non-members limited to 3 uses"
+    },
+    {
+      "title": "AI Workout Routine",
+      "description": "AI designs personalized workout programs",
+      "limit": "Non-members limited to 3 uses"
+    },
+    {
+      "title": "AI Music Recommendation",
+      "description": "AI recommends music that matches your workout style",
+      "limit": "Non-members limited to 3 uses"
+    },
+    {
+      "title": "AI Food Analysis",
+      "description": "Analyze calories and nutrients from photos",
+      "limit": "Members only"
+    },
+    {
+      "title": "Workout Map",
+      "description": "Find nearby workout facilities and route recommendations",
+      "limit": "Non-members limited to 3 uses"
+    },
+    {
+      "title": "Health Dashboard",
+      "description": "View your health data at a glance",
+      "limit": "Available to all users"
+    },
+    {
+      "title": "Push Notifications",
+      "description": "Workout time and health tips reminders",
+      "limit": "Members only"
+    },
+    {
+      "title": "Profile Management",
+      "description": "Manage your personal health profile",
+      "limit": "Members only"
+    }
+  ]
+}

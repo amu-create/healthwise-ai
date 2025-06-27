@@ -1,0 +1,38 @@
+=== Healthwise Backend 설정 가이드 ===
+작성 시간: 2025-06-25 12:36:21
+
+[문제 상황]
+- 새로운 가상환경 생성 후 Django 모듈을 찾을 수 없는 오류 발생
+- ModuleNotFoundError: No module named 'django'
+
+[해결 방법]
+1. 가상환경 활성화 확인
+   (.venv) PS C:\Users\User\healthwise - 복사본 (3)\backend>
+
+2. requirements.txt 패키지 설치
+   pip install -r requirements.txt
+
+3. (선택) PyTorch CPU 버전 설치 (더 빠름)
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+4. Django 서버 실행
+   python manage.py runserver 0.0.0.0:8000
+
+[필수 패키지]
+- Django >= 5.0
+- Django REST Framework
+- Firebase Admin
+- OpenAI, LangChain
+- PyTorch (ML 기능용)
+- Redis, Celery (비동기 작업)
+- Channels (WebSocket)
+
+[환경 설정]
+- .env 파일 확인 (API 키, DB 설정 등)
+- firebase-credentials.json 파일 확인
+- Redis 서버 실행 필요 (WebSocket, Celery용)
+
+[다음 단계 추천]
+1. 데이터베이스 마이그레이션 실행
+2. 초기 데이터 설정 (운동 데이터 등)
+3. 프론트엔드 연동 테스트

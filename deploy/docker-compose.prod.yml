@@ -1,0 +1,109 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 데이터베이스
+  db:
+    image: postgres:14-alpine
+    container_name: healthwise_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-healthwise_prod}
+      POSTGRES_USER: ${POSTGRES_USER:-healthwise_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-healthwise_pass123}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-healthwise_user} -d ${POSTGRES_DB:-healthwise_prod}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis 캐시 및 채널 레이어
+  redis:
+    image: redis:6-alpine
+    container_name: healthwise_redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Django 백엔드
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.prod
+    container_name: healthwise_backend
+    command: >
+      sh -c "
+        python manage.py migrate --noinput &&
+        python manage.py collectstatic --noinput &&
+        gunicorn healthwise.wsgi:application --bind 0.0.0.0:8000 --workers 4
+      "
+    volumes:
+      - media_volume:/app/media
+      - static_volume:/app/staticfiles
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      # Django 설정
+      - DEBUG=False
+      - SECRET_KEY=${SECRET_KEY:-django-insecure-production-key-change-this}
+      - DJANGO_SETTINGS_MODULE=healthwise.settings_docker
+      
+      # 데이터베이스 설정
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-healthwise_user}:${POSTGRES_PASSWORD:-healthwise_pass123}@db:5432/${POSTGRES_DB:-healthwise_prod}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      
+      # Redis 설정
+      - REDIS_URL=redis://redis:6379/1
+      - REDIS_HOST=redis
+      
+      # 보안 설정
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1,0.0.0.0}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost:3000}
+      - CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS:-http://localhost:3000}
+      
+      # OpenAI 설정 (옵션)
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    restart: unless-stopped
+
+  # React 프론트엔드 (Nginx로 서빙)
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile.prod
+      args:
+        - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:8000/api}
+        - REACT_APP_WS_URL=${REACT_APP_WS_URL:-ws://localhost:8000/ws}
+    container_name: healthwise_frontend
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    depends_on:
+      - backend
+    volumes:
+      - static_volume:/usr/share/nginx/html/static
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  media_volume:
+  static_volume:
+
+networks:
+  default:
+    driver: bridge

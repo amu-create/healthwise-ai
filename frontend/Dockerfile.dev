@@ -1,0 +1,46 @@
+# 멀티스테이지 빌드로 이미지 크기 최소화
+FROM node:20-alpine as builder
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# package.json과 lock 파일 복사
+COPY package*.json ./
+
+# npm 설치 (legacy-peer-deps로 의존성 충돌 해결)
+RUN npm ci --legacy-peer-deps
+
+# 소스 코드 복사
+COPY . .
+
+# 실행 스테이지
+FROM node:20-alpine
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# 빌더에서 node_modules 복사
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package*.json ./
+
+# 소스 코드는 볼륨으로 마운트되므로 복사하지 않음
+
+# 캐시 디렉토리 생성 및 권한 설정
+RUN mkdir -p /app/node_modules/.cache && \
+    chmod -R 777 /app/node_modules/.cache
+
+# Windows 볼륨 마운트 문제로 인해 root로 실행
+# RUN addgroup -g 1001 -S nodejs && \
+#     adduser -S nextjs -u 1001
+# USER nextjs
+
+# 포트 노출
+EXPOSE 3000
+
+# 환경변수 설정
+ENV NODE_ENV=development \
+    PORT=3000 \
+    ESLINT_NO_DEV_ERRORS=true
+
+# 개발 서버 시작
+CMD ["npm", "start"]

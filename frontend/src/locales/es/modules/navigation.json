@@ -1,0 +1,19 @@
+{
+  "dashboard": "Panel de Control",
+  "achievements": "Logros",
+  "aiWorkout": "Rutina de Ejercicio IA",
+  "map": "Mapa",
+  "music": "Música",
+  "chat": "Chat IA",
+  "exercise": "Ejercicio",
+  "exerciseVideo": "Videos de Ejercicio",
+  "exerciseLocation": "Ubicación de Ejercicio",
+  "aiMusicRecommend": "Recomendación de Música IA",
+  "nutrition": "Nutrición",
+  "nutritionManagement": "Gestión Nutricional",
+  "aiNutrition": "Análisis Nutricional IA",
+  "profile": "Perfil",
+  "logout": "Cerrar Sesión",
+  "social": "Social",
+  "directMessages": "Mensajes"
+}

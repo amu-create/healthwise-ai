@@ -1,0 +1,20 @@
+{
+  "title": "AI Health Consultation",
+  "welcome": "Hello! Feel free to ask any health-related questions.",
+  "messagePlaceholder": "Type your message...",
+  "newChat": "New Chat",
+  "guestLimit": "Guests can use up to {{count}} times.",
+  "messagesRemaining": "{{count}} messages remaining",
+  "profileHint": "Complete your profile for more accurate personalized health advice.",
+  "suggestions": {
+    "exercise": "Recommend exercises I can do today",
+    "nutrition": "Diet advice for weight loss",
+    "health": "What are good ways to recover from fatigue?",
+    "stress": "Tell me about stress management methods"
+  },
+  "error": "Failed to send message. Please try again.",
+  "deleteAllTitle": "Delete Chat History",
+  "deleteConfirm": "Delete all chat history? This action cannot be undone.",
+  "limitExceededTitle": "Usage Limit",
+  "limitExceededMessage": "Sign up for unlimited access."
+}

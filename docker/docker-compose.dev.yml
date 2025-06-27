@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ../backend:/app
+    environment:
+      - DEBUG=True
+      - DJANGO_SETTINGS_MODULE=healthwise.settings
+    stdin_open: true
+    tty: true
+
+  frontend:
+    command: npm start
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
+      - WDS_SOCKET_HOST=localhost
+      - WDS_SOCKET_PORT=3000
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"

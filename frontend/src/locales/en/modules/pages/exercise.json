@@ -1,0 +1,28 @@
+{
+  "title": "Exercise Videos",
+  "subtitle": "Start home training with expert-selected exercise videos",
+  "searchPlaceholder": "Search exercise videos...",
+  "category": "Category",
+  "categories": {
+    "all": "All",
+    "cardio": "Cardio Workout",
+    "strength": "Strength Training",
+    "yoga": "Yoga",
+    "pilates": "Pilates",
+    "hiit": "HIIT",
+    "stretching": "Stretching"
+  },
+  "difficulty": {
+    "label": "Difficulty",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "loadError": "Failed to load videos.",
+  "watchVideo": "Watch Video",
+  "noResults": "No search results",
+  "tryOtherSearch": "Try different search terms or filters",
+  "logWorkout": "Log Workout Complete",
+  "workoutLogged": "Workout logged!",
+  "workoutLogFailed": "Failed to log workout."
+}

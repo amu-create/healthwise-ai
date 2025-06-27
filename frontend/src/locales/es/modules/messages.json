@@ -1,0 +1,23 @@
+{
+  "title": "Mensajes",
+  "selectConversation": "Seleccionar una conversación",
+  "searchConversations": "Buscar conversaciones",
+  "newConversation": "Nueva Conversación",
+  "searchUsers": "Buscar usuarios",
+  "typeMessage": "Escribe un mensaje...",
+  "online": "En línea",
+  "offline": "Desconectado",
+  "lastSeen": "Última vez: {{time}}",
+  "yesterday": "Ayer",
+  "you": "Tú",
+  "typing": "escribiendo",
+  "deleteConversation": "Eliminar conversación",
+  "conversationDeleted": "Conversación eliminada",
+  "attachment": "Archivo adjunto",
+  "fileTooLarge": "El archivo es demasiado grande (máx. 50MB)",
+  "errorFetchingConversations": "Error al cargar las conversaciones",
+  "errorFetchingMessages": "Error al cargar los mensajes",
+  "errorSendingMessage": "Error al enviar el mensaje",
+  "errorStartingConversation": "Error al iniciar la conversación",
+  "errorDeletingConversation": "Error al eliminar la conversación"
+}

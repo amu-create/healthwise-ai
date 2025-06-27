@@ -1,0 +1,50 @@
+{
+  "feature1": {
+    "label": "AI Health Check",
+    "title": "AI Health Status Analysis",
+    "titleHighlight": "AI Health Analysis",
+    "description": "With simple questionnaires and body information, AI comprehensively analyzes your current health status and presents a personalized health plan.",
+    "items": [
+      "Automatic calculation of BMI, body fat percentage, and other metrics",
+      "Lifestyle-based health risk assessment",
+      "Personalized health improvement plan creation",
+      "Periodic health status tracking and reports"
+    ]
+  },
+  "feature2": {
+    "label": "AI Workout Coach",
+    "title": "AI Exercise Recommendation System",
+    "titleHighlight": "AI Workout Coach",
+    "description": "AI designs optimal workout programs for your fitness level and goals, and guides your exercises in real-time.",
+    "items": [
+      "Workout program generation based on individual fitness and goals",
+      "Accurate posture and breathing guidance for each exercise",
+      "Real-time workout progress monitoring",
+      "Automatic workout recording and performance analysis"
+    ]
+  },
+  "feature3": {
+    "label": "AI Nutrition Guide",
+    "title": "AI Nutrition Management Assistant",
+    "titleHighlight": "AI Nutritionist",
+    "description": "Record your daily meals and AI will analyze nutritional balance and recommend healthy diet plans.",
+    "items": [
+      "Automatic calorie and nutrient calculation from meal records",
+      "Identification of nutrient deficiencies and supplementation suggestions",
+      "Goal-based customized meal plan generation",
+      "Healthy restaurant and menu recommendations"
+    ]
+  },
+  "feature4": {
+    "label": "Exercise Map",
+    "title": "Exercise Facility Integrated Search",
+    "titleHighlight": "Exercise Facility Map",
+    "description": "Find all exercise facilities near your current location at a glance and check detailed information.",
+    "items": [
+      "GPS-based real-time search for nearby gyms and yoga studios",
+      "Facility fees and operating hours information",
+      "Distance and rating-based filtering",
+      "Favorites and visit history management"
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "title": "AI Pose Analysis",
+  "subtitle": "Exercise effectively with correct posture",
+  "realtime_analysis": "Real-time Analysis",
+  "video_upload": "Video Upload",
+  "start_camera_message": "Turn on camera and start exercising",
+  "start_analysis": "Start Analysis",
+  "target_muscles": "Target Muscles",
+  "key_points": "Key Points",
+  "exercise_category": "Exercise Category",
+  "select_exercise": "Select Exercise",
+  "clear_video_required": "Clear video required",
+  "difficulty": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "upload": {
+    "title": "Upload Video",
+    "drag_drop": "Drag and drop or click to upload",
+    "select_file": "Select File",
+    "analyzing": "Analyzing...",
+    "upload_error": "Upload error occurred"
+  },
+  "realtime": {
+    "loading": "Loading camera...",
+    "error": "Cannot access camera",
+    "start": "Start",
+    "stop": "Stop",
+    "analyzing": "Analyzing pose..."
+  },
+  "results": {
+    "title": "Analysis Results",
+    "score": "Score",
+    "feedback": "Feedback",
+    "improvements": "Improvements",
+    "save": "Save Results",
+    "retry": "Retry Analysis"
+  },
+  "messages": {
+    "camera_permission": "Camera permission required",
+    "upload_success": "Upload completed",
+    "analysis_complete": "Analysis completed",
+    "save_success": "Results saved"
+  },
+  "drag_drop_video": "Drag and drop video or click to upload",
+  "or_click_to_select": "Or click to select file",
+  "select_video": "Select Video",
+  "selected_file": "Selected file",
+  "file_size": "File size",
+  "start_upload_analysis": "Start Upload & Analysis",
+  "uploading": "Uploading",
+  "invalid_file_type": "Unsupported file format",
+  "file_too_large": "File size too large (100MB max)",
+  "upload_failed": "Upload failed",
+  "supported_formats": "Supported Formats",
+  "max_file_size": "Max file size: 100MB",
+  "select_exercise_first": "Please select an exercise first",
+  "invalid_exercise": "Invalid exercise selection",
+  "stop_analysis": "Stop Analysis",
+  "no_exercises_available": "No exercises available",
+  "analysis_complete": "Analysis Complete",
+  "share_results": "Share Results",
+  "analyze_again": "Analyze Again",
+  "grade": "Grade",
+  "exercise_time": "Exercise Time",
+  "total_reps": "Total Reps",
+  "analyzed_frames": "Analyzed Frames",
+  "summary": "Summary",
+  "detailed_analysis": "Detailed Analysis",
+  "overall_assessment": "Overall Assessment",
+  "assessment": {
+    "excellent": "Excellent form! You performed the exercise with great precision.",
+    "good": "Good form. Just a little more improvement and you'll be perfect!",
+    "needs_improvement": "There are areas that need improvement. Keep practicing consistently."
+  },
+  "frequent_feedback": "Frequent Feedback",
+  "recommendations": "Recommendations",
+  "recommendation": {
+    "practice_form": "Practice slowly for better form accuracy",
+    "increase_reps": "Increase repetitions to improve strength",
+    "longer_duration": "Try exercising for a longer duration"
+  }
+}

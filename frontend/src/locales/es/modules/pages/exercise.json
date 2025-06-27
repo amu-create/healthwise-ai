@@ -1,0 +1,28 @@
+{
+  "title": "Videos de Ejercicio",
+  "subtitle": "Comienza el entrenamiento en casa con videos de ejercicio seleccionados por expertos",
+  "searchPlaceholder": "Buscar videos de ejercicio...",
+  "category": "Categoría",
+  "categories": {
+    "all": "Todos",
+    "cardio": "Entrenamiento Cardiovascular",
+    "strength": "Entrenamiento de Fuerza",
+    "yoga": "Yoga",
+    "pilates": "Pilates",
+    "hiit": "HIIT",
+    "stretching": "Estiramiento"
+  },
+  "difficulty": {
+    "label": "Dificultad",
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado"
+  },
+  "loadError": "Error al cargar videos.",
+  "watchVideo": "Ver Video",
+  "noResults": "No hay resultados de búsqueda",
+  "tryOtherSearch": "Intenta con otros términos de búsqueda o filtros",
+  "logWorkout": "Registrar Entrenamiento Completo",
+  "workoutLogged": "¡Entrenamiento registrado!",
+  "workoutLogFailed": "Error al registrar el entrenamiento."
+}

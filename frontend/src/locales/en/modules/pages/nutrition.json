@@ -1,0 +1,33 @@
+{
+  "title": "Nutrition Management",
+  "subtitle": "Track and analyze your daily nutrition intake",
+  "periods": {
+    "day": "1 Day",
+    "week": "7 Days",
+    "month": "1 Month",
+    "sixMonths": "6 Months",
+    "year": "1 Year"
+  },
+  "errorLoadingData": "Failed to load nutrition data.",
+  "averageCalories": "Average Calories",
+  "averageProtein": "Average Protein",
+  "averageCarbohydrates": "Average Carbohydrates",
+  "averageFat": "Average Fat",
+  "calorieIntakeTrend": "Calorie Intake Trend",
+  "averageNutrientRatio": "Average Nutrient Ratio",
+  "nutrientIntakeTrend": "Nutrient Intake Trend",
+  "periodSummary": "Period Summary",
+  "analyzedFoodCount": "Analyzed Foods",
+  "recordedDays": "Recorded Days",
+  "dailyAverageFoods": "Daily Average Foods",
+  "calorieGoalAchievement": "Calorie Goal Achievement",
+  "noDataForPeriod": "No nutrition data for selected period",
+  "startRecording": "Start recording food with AI Nutrition Analysis!",
+  "calories": "Calories",
+  "kcalPerDay": "kcal/day",
+  "gPerDay": "g/day",
+  "gram": "g",
+  "breakfast": "Breakfast",
+  "lunch": "Lunch",
+  "dinner": "Dinner"
+}

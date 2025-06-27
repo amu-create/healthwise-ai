@@ -1,0 +1,26 @@
+{
+  "title": "Find Workout Facilities",
+  "searchPlaceholder": "Search for location",
+  "searchRadius": "Search Radius",
+  "fitness": "Gym",
+  "yoga": "Yoga",
+  "pilates": "Pilates",
+  "crossfit": "CrossFit",
+  "swimming": "Swimming Pool",
+  "martialArts": "Martial Arts",
+  "danceAcademy": "Dance Academy",
+  "other": "Other",
+  "exerciseType": "Exercise Type",
+  "locationSettings": "Location Settings",
+  "searchNearby": "Search Nearby",
+  "locating": "Locating...",
+  "noResults": "No search results",
+  "tryDifferentSearch": "Try different search terms",
+  "locationStatus": {
+    "gps": "GPS Location",
+    "wifi": "Wi-Fi Location",
+    "ip": "IP Location",
+    "manual": "Manual Location"
+  },
+  "calories": "calories"
+}

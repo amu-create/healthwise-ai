@@ -1,0 +1,19 @@
+{
+  "dashboard": "Dashboard",
+  "achievements": "Achievements",
+  "aiWorkout": "AI Workout Routine",
+  "map": "Map",
+  "music": "Music",
+  "chat": "AI Chat",
+  "exercise": "Exercise",
+  "exerciseVideo": "Exercise Videos",
+  "exerciseLocation": "Exercise Location",
+  "aiMusicRecommend": "AI Music Recommendation",
+  "nutrition": "Nutrition",
+  "nutritionManagement": "Nutrition Management",
+  "aiNutrition": "AI Nutrition Analysis",
+  "profile": "Profile",
+  "logout": "Logout",
+  "social": "Social",
+  "directMessages": "Messages"
+}

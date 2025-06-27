@@ -1,0 +1,84 @@
+{
+  "title": "AI 운동 자세 분석",
+  "subtitle": "정확한 운동 자세로 효과적인 운동을 해보세요",
+  "realtime_analysis": "실시간 분석",
+  "video_upload": "동영상 업로드",
+  "start_camera_message": "카메라를 켜고 운동을 시작하세요",
+  "start_analysis": "분석 시작",
+  "target_muscles": "타겟 근육",
+  "key_points": "주요 포인트",
+  "exercise_category": "운동 카테고리",
+  "select_exercise": "운동 선택",
+  "clear_video_required": "명확한 동영상이 필요합니다",
+  "difficulty": {
+    "beginner": "초급",
+    "intermediate": "중급",
+    "advanced": "고급"
+  },
+  "upload": {
+    "title": "동영상 업로드",
+    "drag_drop": "파일을 드래그하거나 클릭하여 업로드",
+    "select_file": "파일 선택",
+    "analyzing": "분석 중...",
+    "upload_error": "업로드 오류가 발생했습니다"
+  },
+  "realtime": {
+    "loading": "카메라 로딩 중...",
+    "error": "카메라에 접근할 수 없습니다",
+    "start": "시작",
+    "stop": "정지",
+    "analyzing": "자세 분석 중..."
+  },
+  "results": {
+    "title": "분석 결과",
+    "score": "점수",
+    "feedback": "피드백",
+    "improvements": "개선 사항",
+    "save": "결과 저장",
+    "retry": "다시 분석"
+  },
+  "messages": {
+    "camera_permission": "카메라 권한이 필요합니다",
+    "upload_success": "업로드가 완료되었습니다",
+    "analysis_complete": "분석이 완료되었습니다",
+    "save_success": "결과가 저장되었습니다"
+  },
+  "drag_drop_video": "동영상을 드래그하거나 클릭하여 업로드하세요",
+  "or_click_to_select": "또는 클릭하여 파일을 선택하세요",
+  "select_video": "동영상 선택",
+  "selected_file": "선택된 파일",
+  "file_size": "파일 크기",
+  "start_upload_analysis": "업로드 및 분석 시작",
+  "uploading": "업로드 중",
+  "invalid_file_type": "지원하지 않는 파일 형식입니다",
+  "file_too_large": "파일 크기가 너무 큽니다 (100MB 이하)",
+  "upload_failed": "업로드에 실패했습니다",
+  "supported_formats": "지원 형식",
+  "max_file_size": "최대 파일 크기: 100MB",
+  "select_exercise_first": "먼저 운동을 선택해주세요",
+  "invalid_exercise": "잘못된 운동 선택입니다",
+  "stop_analysis": "분석 중지",
+  "no_exercises_available": "사용 가능한 운동이 없습니다",
+  "analysis_complete": "분석 완료",
+  "share_results": "결과 공유",
+  "analyze_again": "다시 분석",
+  "grade": "등급",
+  "exercise_time": "운동 시간",
+  "total_reps": "총 반복 횟수",
+  "analyzed_frames": "분석된 프레임",
+  "summary": "요약",
+  "detailed_analysis": "상세 분석",
+  "overall_assessment": "종합 평가",
+  "assessment": {
+    "excellent": "훌륭한 자세입니다! 정확한 동작으로 운동을 잘 수행했습니다.",
+    "good": "좋은 자세입니다. 조금만 더 개선하면 완벽해질 거예요!",
+    "needs_improvement": "개선이 필요한 부분들이 있습니다. 꾸준히 연습해주세요."
+  },
+  "frequent_feedback": "빈번한 피드백",
+  "recommendations": "개선 권장사항",
+  "recommendation": {
+    "practice_form": "정확한 자세를 위해 천천히 연습해보세요",
+    "increase_reps": "반복 횟수를 늘려 근력을 향상시켜보세요",
+    "longer_duration": "더 긴 시간 동안 운동해보세요"
+  }
+}

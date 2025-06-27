@@ -1,0 +1,19 @@
+{
+  "dashboard": "대시보드",
+  "achievements": "업적",
+  "aiWorkout": "AI 운동 루틴",
+  "map": "운동 시설 찾기",
+  "music": "AI 음악 추천",
+  "chat": "AI 건강 상담",
+  "exercise": "운동",
+  "exerciseVideo": "운동 영상",
+  "exerciseLocation": "운동 위치",
+  "aiMusicRecommend": "AI 음악 추천",
+  "nutrition": "영양",
+  "nutritionManagement": "영양 관리",
+  "aiNutrition": "AI 영양 분석",
+  "profile": "프로필",
+  "logout": "로그아웃",
+  "social": "소셜",
+  "directMessages": "대화"
+}

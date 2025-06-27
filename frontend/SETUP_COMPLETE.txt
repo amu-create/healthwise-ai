@@ -1,0 +1,33 @@
+=== Healthwise Frontend 설정 완료 ===
+작성 시간: 2025-06-25 12:39
+
+[완료된 작업]
+- npm install --legacy-peer-deps로 패키지 설치 완료
+- 1518개 패키지 설치됨
+- react-scripts 정상 설치 확인
+
+[실행 방법]
+1. 기본 실행: npm start
+2. HTTPS 실행: npm run start:https (카메라, 마이크 접근용)
+3. 로컬 HTTP: npm run start:local
+
+[보안 취약점]
+- 10개 발견 (1 low, 3 moderate, 6 high)
+- 개발용으로는 즉시 사용 가능
+- 프로덕션 배포 전 npm audit fix 권장
+
+[프록시 설정]
+- Backend API: http://localhost:8000
+- package.json에 설정됨
+
+[주요 기능]
+- MediaPipe 포즈 감지
+- Firebase 인증
+- Material-UI 디자인
+- 다국어 지원 (i18next)
+- 실시간 차트 (recharts)
+
+[환경 설정]
+- .env 파일 확인 필요
+- Firebase 설정
+- API 엔드포인트 확인

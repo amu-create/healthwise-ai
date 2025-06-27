@@ -1,0 +1,12 @@
+{
+  "welcomeMessage": "¡Bienvenido a FitFlow!",
+  "subtitle": "Tu compañero de fitness personalizado",
+  "getStarted": "Comenzar",
+  "features": {
+    "title": "Características",
+    "ai": "Planes de ejercicio y nutrición con IA",
+    "tracking": "Rastrea tu progreso y logros",
+    "community": "Conecta con la comunidad fitness",
+    "music": "Recomendaciones de música para ejercitar"
+  }
+}
